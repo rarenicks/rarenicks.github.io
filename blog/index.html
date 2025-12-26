@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Blog | Avdhesh Singh Chouhan</title>
+    <meta name="description" content="Deep dives into AI engineering, system architecture, and MLOps.">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <style>
+        .blog-header {
+            padding-top: calc(var(--header-height) + 4rem);
+            padding-bottom: 4rem;
+            background-color: var(--bg-secondary);
+        }
+
+        .filter-bar {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">Avdhesh Singh Chouhan</a>
+            <nav class="nav-links">
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#domains">Expertise</a>
+                <a href="../index.html#projects">Work</a>
+                <a href="index.html" class="text-accent">Technical Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="blog-header">
+            <div class="container">
+                <h1 style="max-width: 800px;">Engineering Notes</h1>
+                <p style="font-size: 1.2rem; max-width: 600px;">
+                    A collection of thoughts on building production AI systems.
+                    Focus is on architecture, failure modes, and trade-offs.
+                </p>
+                <div class="filter-bar">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Architecture</button>
+                    <button class="filter-btn">MLOps</button>
+                    <button class="filter-btn">Edge AI</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="section-gap" style="padding: 4rem 0;">
+            <div class="container">
+                <div class="blog-grid">
+                    <!-- Article 1 -->
+                    <a href="designing-agentic-ai.html" class="blog-card">
+                        <span class="blog-date">Oct 24, 2024</span>
+                        <h3>Designing Agentic AI Systems Beyond the "Toy Demo" Phase</h3>
+                        <p>Why most LangChain tutorials fail in production and how to build robust state management for
+                            autonomous agents.</p>
+                        <div class="tech-stack" style="margin-top: 1rem;">
+                            <span class="tech-tag">Architecture</span>
+                            <span class="tech-tag">Agents</span>
+                        </div>
+                    </a>
+
+                    <!-- Article 2 -->
+                    <a href="#" class="blog-card">
+                        <span class="blog-date">Sep 12, 2024</span>
+                        <h3>The Hidden Cost of Latency in LLM Applications</h3>
+                        <p>Analyzing TTFT (Time To First Token) vs Total Latency and how standard caching strategies
+                            optimize user retention.</p>
+                        <div class="tech-stack" style="margin-top: 1rem;">
+                            <span class="tech-tag">Performance</span>
+                        </div>
+                    </a>
+
+                    <!-- Article 3 -->
+                    <a href="#" class="blog-card">
+                        <span class="blog-date">Aug 05, 2024</span>
+                        <h3>When NOT to use an LLM</h3>
+                        <p>A flowchart for decision makers. Sometimes a regex or a simple classifier is 100x cheaper and
+                            1000x faster.</p>
+                        <div class="tech-stack" style="margin-top: 1rem;">
+                            <span class="tech-tag">Strategy</span>
+                        </div>
+                    </a>
+
+                    <!-- Article 4 -->
+                    <a href="#" class="blog-card">
+                        <span class="blog-date">Jul 22, 2024</span>
+                        <h3>Optimizing Triton Inference Server for Mixed Workloads</h3>
+                        <p>Strategies for handling both high-throughput embeddings and high-latency generation on the
+                            same cluster.</p>
+                        <div class="tech-stack" style="margin-top: 1rem;">
+                            <span class="tech-tag">MLOps</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Avdhesh Singh Chouhan</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
