@@ -44,6 +44,25 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* Dynamic Cursor Glow Effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(47, 129, 247, 0.15),
+            transparent 40%);
+    z-index: -1;
+    /* Behind everything */
+    pointer-events: none;
+    /* Let clicks pass through */
+    transition: opacity 0.3s ease;
 }
 
 a {
