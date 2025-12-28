@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Avdhesh Singh Chouhan</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">Avdhesh Singh Chouhan</a>
+            <nav class="nav-links">
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#projects">Work</a>
+                <a href="index.html">Technical Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-post">
+            <div class="container">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <span class="post-date">{{ date }}</span>
+                        <span class="post-tag">{{ category }}</span>
+                    </div>
+                    <h1>{{ title }}</h1>
+                </header>
+
+                <div class="post-content">
+                    {{ content_html }}
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Avdhesh Singh Chouhan. Built with performance in mind.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

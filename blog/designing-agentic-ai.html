@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing Agentic AI Systems Beyond the "Toy Demo" Phase</title>
+    <meta name="description" content="Technical deep dive into building reliable agentic workflows.">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <style>
+        body {
+            background-color: var(--bg-primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">Avdhesh Singh Chouhan</a>
+            <nav class="nav-links">
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#domains">Expertise</a>
+                <a href="../index.html#projects">Work</a>
+                <a href="index.html" class="text-accent">Technical Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: calc(var(--header-height) + 4rem); padding-bottom: 4rem;">
+        <article class="container">
+            <div class="article-header">
+                <div style="margin-bottom: 1rem;">
+                    <a href="index.html" class="text-secondary" style="font-size: 0.9rem;">← Back to Blog</a>
+                </div>
+                <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Designing Agentic AI Systems Beyond the "Toy Demo"
+                    Phase</h1>
+                <div class="text-secondary text-mono" style="font-size: 0.9rem;">
+                    October 24, 2024 • 8 min read • <span class="text-accent">Architecture</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>The internet is flooded with "Build an Autonomous Agent in 5 minutes" tutorials. They usually involve
+                    a simple loop where an LLM picks a tool, runs it, and repeats. It works great for a demo where you
+                    ask "What is the weather in Tokyo?".</p>
+
+                <p>It fails catastrophically when you ask it to "Process these 500 invoices and reconcile them with the
+                    ERP system, but ask for human approval if the variance is > $1000".</p>
+
+                <p>In this post, I want to discuss the architecture required to move agentic AI from a toy to a
+                    production-grade system.</p>
+
+                <h2>1. State Management is Everything</h2>
+                <p>The biggest mistake in naive agent implementations is implicit state. Most frameworks treat the
+                    "message history" as the state. This is insufficient for complex workflows.</p>
+
+                <p>In production, you need <strong>explicit, structured state</strong>. We don't just pass strings back
+                    and forth; we pass a State Object that defines exactly where we are in the process.</p>
+
+                <pre><code>class WorkflowState(BaseModel):
+    current_step: str
+    reconciliation_status: dict[str, str]
+    human_approval_required: bool = False
+    retry_count: int = 0
+    artifacts: List[str] = []</code></pre>
+
+                <p>By treating the agent's memory as a database record rather than a chat log, we gain observability,
+                    resumability, and debuggability.</p>
+
+                <h2>2. Deterministic Routing > "Intelligent" routing</h2>
+                <p>We often overestimate the reasoning capabilities of LLMs for control flow. Relying on an LLM to
+                    decide <em>every</em> single next step is a recipe for non-deterministic chaos.</p>
+
+                <p>Instead, use LLMs only for the "fuzzy" decisions, and use code for the hard rules. If the invoice
+                    amount is > $1000, <strong>code</strong> should trigger the approval workflow, not the LLM. The LLM
+                    should be used to extract the invoice amount, but the routing logic should be deterministic
+                    Python/Go code.</p>
+
+                <blockquote>
+                    "Constraint is the mother of reliability. Restrict the agent's action space at every step."
+                </blockquote>
+
+                <h2>3. The "Human-in-the-Loop" Pattern</h2>
+                <p>Agents will get stuck. They will hallucinate tool arguments. They will encounter API errors.</p>
+
+                <p>A production system must have a "suspension" protocol. When an agent hits a critical failure or a
+                    high-stakes decision, it should serialize its state to a database and emit an event. A human
+                    operator can then view the state, correct a variable, and "resume" the agent.</p>
+
+                <p>This requires your architecture to be asynchronous and event-driven, rather than a simple synchronous
+                    `while` loop.</p>
+
+                <h2>Conclusion</h2>
+                <p>Building agents is easy. Building reliable agents is an exercise in distributed systems engineering,
+                    state machine design, and rigorous evaluation. The LLM is just a component, not the architect.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Avdhesh Singh Chouhan</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
