@@ -11,9 +11,3 @@ __pycache__/
 # Logs
 *.log
 
-# Old Files
-Avdhesh_CV_GenAI_EP.pdf
-resume1.txt
-resume2.txt
-fetch_repos.py
-fetch_details.py
