@@ -1,6 +1,6 @@
 # Avdhesh Singh Chouhan - AI Architect Portfolio
 
-Personal portfolio and digital home for **Avdhesh Singh Chouhan**, Principal AI Architect at **LEC Robotics**.
+Personal portfolio and digital home for **Avdhesh Singh Chouhan**, Principal AI Architect at **LEC AI**.
 
 ## About
 
@@ -12,7 +12,7 @@ I'm building **[Donnie](https://www.lecai.ai/)** — an organizational intellige
 
 ## Experience
 
-- **Principal AI Architect** @ LEC Robotics (Feb 2026 – Present) — Building Donnie
+- **Principal AI Architect** @ LEC AI (Feb 2026 – Present) — Building Donnie
 - **Senior AI Engineer** @ Turing (Oct 2025 – Feb 2026)
 - **Lead AI/ML Engineer** @ Capgemini Engineering (Jun 2022 – Oct 2025)
 - **Software Engineer (Cloud & ML)** @ ConnectWise (Sep 2019 – Jun 2022)
